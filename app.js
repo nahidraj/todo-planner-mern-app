@@ -8,11 +8,12 @@ const route = require("./src/routes/api");
 const rateLimit = require("express-rate-limit");
 require("dotenv").config();
 
-app.use(cors());
 app.use(bodyParser.json());
 
-// app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
+app.use(rateLimit({ windowMs: 15 * 60 * 1000, max:2000 }));
 
+app.use(cors());
+app.use(express.json());  
 // db conncenation start
 
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.ai7lpqx.mongodb.net/ToDoPlanner?retryWrites=true&w=majority&appName=Cluster0`;
